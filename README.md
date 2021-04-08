@@ -1,7 +1,7 @@
 # 5-Ball Snooker Counter Application
 ![Video](https://i.makeagif.com/media/1-26-2018/uHXNKT.gif)
 
-Visit [Pages for Report -optional](using github.io option)
+
 
 Build | Code Quality | Unity | [Git Inspector](using github.io option) 
 ------|----------|-------|--------------
