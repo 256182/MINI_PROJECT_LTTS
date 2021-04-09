@@ -1,19 +1,24 @@
 # Name of the project
-PROJECT_NAME = Calculator
+PROJECT_NAME = SNOOKER
 
 # Output directory
 BUILD = build
 
 # All source code files
-SRC = project_main.c\
-src/calculator_operations.c
+SRC = src/blackcolour.c\
+src/bluecolour.c\
+src/browncolour.c\
+src/greencolour.c\
+src/pinkcolour.c\
+src/yellowcolour.c\
+src/redcolour.c
+
 
 # All test source files
-TEST_SRC = src/calculator_operations.c\
-test/test_calculator_operations.c\
+TEST_SRC = test/test_snooker_operations.c\
 unity/unity.c\
 
-TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).out
+TEST_OUTPUT = Test_$(PROJECT_NAME)
 
 # All include folders with header files
 INC	= -Iinc\
@@ -21,40 +26,56 @@ INC	= -Iinc\
 
 #Library Inlcudes
 #INCLUDE_LIBS = 
-INCLUDE_LIBS = -lcunit
+
 
 # Project Output name
 PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME).out
 
-# Document files
 DOCUMENTATION_OUTPUT = documentation/html
 
-# Default target built
+# Document files
+#To check if the OS is Windows or Linux and set the executable file extension and delete command accordingly
+ifdef OS
+   RM = del /q
+   FixPath = $(subst /,\,$1)
+   EXEC = exe
+else
+   ifeq ($(shell uname), Linux)
+      RM = rm -rf
+      FixPath = $1
+	  EXEC = out
+   endif
+endif
+
 $(PROJECT_NAME):all
 
-# Run the target even if the matching name exists
-.PHONY: run clean test doc all
 
-all: $(SRC) $(BUILD)
-	gcc $(SRC) $(INC) -o $(PROJECT_OUTPUT).out
+# Makefile will not run target command if the name with file already exists. To override, use .PHONY
+.PHONY : all test coverage run clean doc
 
-# Call `make run` to run the application
+all: $(BUILD)
+	gcc project_main.c $(SRC) $(INC) -o $(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
+
 run:$(PROJECT_NAME)
-	./$(PROJECT_OUTPUT).out
+	$(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
 
-# Document the code using Doxygen
+test: $(SRC) $(TEST_SRC) 
+	gcc $^ $(INC) -o $(call FixPath,$(BUILD)/$(TEST_OUTPUT).$(EXEC))
+	$(call FixPath,$(BUILD)/$(TEST_OUTPUT).$(EXEC))
+	
+
+coverageCheck:$(BUILD)
+	gcc -fprofile-arcs -ftest-coverage $(SRC) $(INC) project_main.c -o $(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
+	$(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
+	gcov -a project_main.C
+
 doc:
-	make -C ./documentation
-
-# Build and run the unit tests
-test:$(BUILD)
-	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) $(INCLUDE_LIBS)
-	./$(TEST_OUTPUT)
-
-# Remove all the built files, invoke by `make clean`
-clean:
-	rm -rf $(BUILD) $(DOCUMENTATION_OUTPUT)
-
-# Create new build folder if not present
+	make -C ./$(DOCUMENTATION_OUTPUT)
 $(BUILD):
-	mkdir build
+	mkdir $(BUILD)
+
+clean:
+	$(RM) $(call FixPath,$(BUILD)/*)
+	
+	rmdir $(BUILD) $(DOCUMENTATION_OUTPUT) $(*.gcno) $(*.gcda)
+
