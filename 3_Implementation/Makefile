@@ -25,8 +25,14 @@ INC	= -Iinc\
 -Iunity\
 
 #Library Inlcudes
+<<<<<<< HEAD
 #INCLUDE_LIBS = 
 
+=======
+#if working with CUnit 
+#INCLUDE_LIBS = -lcunit
+INCLUDE_LIBS =
+>>>>>>> ef16aa28342f860a7b28064500abe2ba313b6bba
 
 # Project Output name
 PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME).out
@@ -59,6 +65,7 @@ all: $(BUILD)
 run:$(PROJECT_NAME)
 	$(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
 
+<<<<<<< HEAD
 test: $(SRC) $(TEST_SRC) 
 	gcc $^ $(INC) -o $(call FixPath,$(BUILD)/$(TEST_OUTPUT).$(EXEC))
 	$(call FixPath,$(BUILD)/$(TEST_OUTPUT).$(EXEC))
@@ -73,6 +80,20 @@ doc:
 	make -C ./$(DOCUMENTATION_OUTPUT)
 $(BUILD):
 	mkdir $(BUILD)
+=======
+# Document the code using Doxygen
+#doc:
+#	make -C ./documentation
+
+# Build and run the unit tests
+test:$(BUILD)
+	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT)
+	./$(TEST_OUTPUT)
+#Coverage
+coverageCheck:$(BUILD)
+	g++ -fprofile-arcs -ftest-coverage -fPIC -O0 $(TEST_SRC) $(INC) -o $(TEST_OUTPUT)
+	./$(TEST_OUTPUT)
+>>>>>>> ef16aa28342f860a7b28064500abe2ba313b6bba
 
 clean:
 	$(RM) $(call FixPath,$(BUILD)/*)
