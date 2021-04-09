@@ -64,11 +64,6 @@ test: $(SRC) $(TEST_SRC)
 	$(call FixPath,$(BUILD)/$(TEST_OUTPUT).$(EXEC))
 	
 
-coverageCheck:$(BUILD)
-	gcc -fprofile-arcs -ftest-coverage $(SRC) $(INC) project_main.c -o $(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
-	$(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
-	gcov -a project_main.C
-
 doc:
 	make -C ./$(DOCUMENTATION_OUTPUT)
 $(BUILD):
