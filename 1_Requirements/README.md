@@ -50,7 +50,7 @@
 | ----- | ----- | ----- |
 | HR1 | Win Points | Technical |
 | HR2 | Loose Points | Technical |
-| HR3 | Calculate Winner | Technical |
+| HR3 | Calculate the Winner | Technical |
 | HR4 | 2 Players | Basic |
 
 ## Low Level Requirements: 
