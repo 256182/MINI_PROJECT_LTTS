@@ -30,17 +30,17 @@ int main(){
     printf("Enter the Name of 2nd Player(in caps) : ");
     scanf("%s",&player2_name);
     
-    printf("\t\t\t***PLEASE GIVE A HUGE ROUND OF APPLAUSE FOR THE FINALISTS\n\n");
+    printf("\n\n\t\t\t***PLEASE GIVE A HUGE ROUND OF APPLAUSE FOR THE FINALISTS\n\n");
     
-    printf("\t\t\t\t1.%s\n\t\t\t2.%s\n\n",player1_name,player2_name);
+    printf("\t\t\t\t1.%s\n\t\t\t\t2.%s\n\n",player1_name,player2_name);
     
-    printf("\t\t\t\t***SILENCE PLEASE\n\n");
+    printf("\t\t\t\t***SILENCE PLEASE***\n\n");
     printf("\t\t\t\t%s PLEASE BREAK\n\n",player1_name);
     int player1_score=0;
     int player2_score=0;
     while(red_ball_count<5){
-        printf("\n\n\t\t\t***CURRENT SCORES ARE");
-        printf("\n\n\t\t%s:%d\t%s:%d",player1_name,player1_score,player2_name,player2_score);
+        printf("\n\n\t\t\t***CURRENT SCORES ARE***");
+        printf("\n\n\t\t\t%s:%d\t%s:%d",player1_name,player1_score,player2_name,player2_score);
         if(player_count==0){
             printf("\n\n\t\t\t%s CAN NOW PLAY!!\n\n",player1_name);
             int choice_1;
