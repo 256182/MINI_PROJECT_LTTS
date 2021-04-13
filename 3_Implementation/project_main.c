@@ -366,15 +366,17 @@ int main(){
             continue;
         }
     }
+    printf("\n\n\t\t\t***CURRENT SCORES ARE***");
+    printf("\n\n\t\t\t%s:%d\t%s:%d",player1_name,player1_score,player2_name,player2_score);
     printf("\n\n\n\t\t\t***CHAMPION OF THE WORLD SNOOKER TOURNAMENT IS***");
     if(player1_score>player2_score){
-        printf("\n\n\t\t\t\t%s\n",player1_name);
+        printf("\n\n\t\t\t\t\t%s\n",player1_name);
         }
     else if(player1_score<player2_score){
-        printf("\n\n\t\t\t\t%s\n",player2_name);
+        printf("\n\n\t\t\t\t\t%s\n",player2_name);
         }
     else{
-        printf("\n\n\t\t\t\tIT IS A DRAW\n");
+        printf("\n\n\t\t\t\t\tIT IS A DRAW\n");
     }
     return 0;
 
