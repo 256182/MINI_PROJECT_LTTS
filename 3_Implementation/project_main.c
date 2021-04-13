@@ -18,7 +18,7 @@
 int main(){
     printf("\t\t\t\t\t****HELLO EVERYONE***\n");
     
-    printf("\t\t\t***WELCOME TO THE FINALS OF THE WORLD SNOOKER TOURNAMENT\n\n");
+    printf("\t\t\t***WELCOME TO THE FINALS OF THE WORLD SNOOKER TOURNAMENT***\n\n");
     
     players_t nplay={0,1};
     int player_count=0;
