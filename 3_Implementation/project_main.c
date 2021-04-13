@@ -30,7 +30,7 @@ int main(){
     printf("Enter the Name of 2nd Player(in caps) : ");
     scanf("%s",&player2_name);
     
-    printf("\n\n\t\t\t***PLEASE GIVE A HUGE ROUND OF APPLAUSE FOR THE FINALISTS\n\n");
+    printf("\n\n\t\t\t***PLEASE GIVE A HUGE ROUND OF APPLAUSE FOR THE FINALISTS***\n\n");
     
     printf("\t\t\t\t1.%s\n\t\t\t\t2.%s\n\n",player1_name,player2_name);
     
