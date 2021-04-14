@@ -13,12 +13,12 @@ src/pinkcolour.c\
 src/yellowcolour.c\
 src/redcolour.c
 
-BUILD = Build
+
 # All test source files
 TEST_SRC = test/test_snooker_operations.c\
 unity/unity.c\
 
-TEST_OUTPUT =  $(BUILD)/Test_$(PROJECT_NAME).out
+TEST_OUTPUT =  Test_$(PROJECT_NAME)
 
 # All include folders with header files
 INC_H = inc
@@ -27,9 +27,6 @@ INC_T = unity
 #Library Inlcudes
 #INCLUDE_LIBS = 
 
-
-# Project Output name
-PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME).out
 
 COV_SRC = test_snooker_operations.c
 
@@ -55,24 +52,18 @@ $(PROJECT_NAME):all
 # Makefile will not run target command if the name with file already exists. To override, use .PHONY
 .PHONY : all test coverage run clean doc
 
-all: $(SRC) $(BUILD)
-	gcc -I $(INC_H) $(SRC) project_main.c -o $(call FixPath,$(PROJECT_OUTPUT))
+all:
+	gcc -I $(INC_H) $(SRC) project_main.c -o $(call FixPath,$(PROJECT_NAME).$(EXEC))
 	
 run:
-	$(call FixPath,$(PROJECT_OUTPUT))
-test:$(BUILD)
-	gcc -I $(INC_H) -I $(INC_T) $(TEST_SRC) $(SRC) -o $(call FixPath,$(TEST_OUTPUT))
-	./$(call FixPath,$(TEST_OUTPUT))
-	
-
-doc:
-	make -C ./$(DOCUMENTATION_OUTPUT)
-$(BUILD):
-	mkdir $(BUILD)
+	$(call FixPath,$(PROJECT_NAME).$(EXEC))
+test:
+	gcc -I $(INC_H) -I $(INC_T) $(TEST_SRC) $(SRC) -o $(call FixPath,$(TEST_OUTPUT).$(EXEC))
+	./$(call FixPath,$(TEST_OUTPUT).$(EXEC))
 
 coverage:
-	cp test/test_snooker_operations.c .
-	gcc -fprofile-arcs -ftest-coverage -I $(INC_H) -I $(INC_T) unity/unity.c test_snooker_operations.c $(SRC) -o $(call FixPath, $(TEST_OUTPUT).$(EXEC))
+	cp test/test.c .
+	gcc -fprofile-arcs -ftest-coverage -I $(INC_H) -I $(INC_T) unity/unity.c test.c $(SRC) -o $(call FixPath, $(TEST_OUTPUT).$(EXEC))
 	$(call FixPath, ./$(TEST_OUTPUT).$(EXEC))
 	gcov -a $(COV_SRC)
 	$(RM) *.$(EXEC)
@@ -80,21 +71,23 @@ coverage:
 	$(RM) *.gcno
 	$(RM) *.c.gcov
 	$(RM) *.DAT
-	$(RM) test_snooker_operations.c
+	$(RM) test.c
 
 
 cppcheck:
 	cppcheck --enable=all $(SRC) project_main.c
 debug:
-	gcc -I $(INC_H) $(SRC) main.c -g -o $(PROJECT_NAME).$(EXEC)
+	gcc -I $(INC_H) $(SRC) project_main.c -g -o $(PROJECT_NAME).$(EXEC)
 	gdb $(PROJECT_NAME).$(EXEC)
 
 valgrind:
-	valgrind ./$(TEST_OUTPUT).exe
+	valgrind ./$(TEST_OUTPUT).$(EXEC)
 
 
 clean:
-	$(RM) $(call FixPath,$(BUILD)/*)
-	make clean -C doc
-	rmdir $(BUILD) doc/html 
+	$(RM) *.DAT
+	$(RM) *.$(EXEC)
+	$(RM) *.gcda
+	$(RM) *.gcno
+	$(RM) *.c.gcov
 
