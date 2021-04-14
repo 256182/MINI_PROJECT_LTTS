@@ -21,8 +21,8 @@ unity/unity.c\
 TEST_OUTPUT = Test_$(PROJECT_NAME)
 
 # All include folders with header files
-INC	= -Iinc\
--Iunity\
+INC_H = inc
+INC_T = unity
 
 #Library Inlcudes
 #INCLUDE_LIBS = 
@@ -30,6 +30,8 @@ INC	= -Iinc\
 
 # Project Output name
 PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME).out
+
+COV_SRC = test_snooker_operations.c
 
 DOCUMENTATION_OUTPUT = documentation/html
 
@@ -54,14 +56,14 @@ $(PROJECT_NAME):all
 .PHONY : all test coverage run clean doc
 
 all: $(BUILD)
-	gcc project_main.c $(SRC) $(INC) -o $(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
+	gcc -I $(INC_H) $(SRC) project_main.c -o $(call FixPath,$(PROJECT_NAME).$(EXEC))
 
 run:$(PROJECT_NAME)
 	$(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
 
 test: $(SRC) $(TEST_SRC) 
-	gcc $^ $(INC) -o $(call FixPath,$(BUILD)/$(TEST_OUTPUT).$(EXEC))
-	$(call FixPath,$(BUILD)/$(TEST_OUTPUT).$(EXEC))
+	gcc -I $(INC_H) -I $(INC_T) $(TEST_SRC) $(SRC) -o $(call FixPath,$(TEST_OUTPUT).$(EXEC))
+	./$(call FixPath,$(TEST_OUTPUT).$(EXEC))
 	
 
 doc:
@@ -69,8 +71,33 @@ doc:
 $(BUILD):
 	mkdir $(BUILD)
 
+coverage:
+	cp test/test_snooker_operations.c .
+	gcc -fprofile-arcs -ftest-coverage -I $(INC_H) -I $(INC_T) unity/unity.c test_snooker_operations.c $(SRC) -o $(call FixPath, $(TEST_OUTPUT).$(EXEC))
+	$(call FixPath, ./$(TEST_OUTPUT).$(EXEC))
+	gcov -a $(COV_SRC)
+	$(RM) *.$(EXEC)
+	$(RM) *.gcda
+	$(RM) *.gcno
+	$(RM) *.c.gcov
+	$(RM) *.DAT
+	$(RM) test_snooker_operations.c
+
+
+cppcheck:
+	cppcheck --enable=all $(SRC) project_main.c
+debug:
+	gcc -I $(INC_H) $(SRC) main.c -g -o $(PROJECT_NAME).$(EXEC)
+	gdb $(PROJECT_NAME).$(EXEC)
+
+valgrind:
+	valgrind ./$(TEST_OUTPUT).$(EXEC)
+
+
 clean:
-	$(RM) $(call FixPath,$(BUILD)/*)
-	
-	rmdir $(BUILD) $(DOCUMENTATION_OUTPUT) $(*.gcno) $(*.gcda)
+	$(RM) *.DAT
+	$(RM) *.$(EXEC)
+	$(RM) *.gcda
+	$(RM) *.gcno
+	$(RM) *.c.gcov
 
