@@ -95,9 +95,7 @@ valgrind:
 
 
 clean:
-	$(RM) *.DAT
-	$(RM) *.$(EXEC)
-	$(RM) *.gcda
-	$(RM) *.gcno
-	$(RM) *.c.gcov
+	$(RM) $(call FixPath,$(BUILD)/*)
+	make clean -C doc
+	rmdir $(BUILD) doc/html 
 
