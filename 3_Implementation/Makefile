@@ -59,7 +59,7 @@ all:
 	gcc -I $(INC_H) $(SRC) project_main.c -o $(call FixPath,$(PROJECT_OUTPUT))
 	
 run:
-	$(call FixPath,$(PROJECT_NAME).$(EXEC))
+	$(call FixPath,$(PROJECT_OUTPUT))
 test:
 	gcc -I $(INC_H) -I $(INC_T) $(TEST_SRC) $(SRC) -o $(call FixPath,$(TEST_OUTPUT))
 	./$(call FixPath,$(TEST_OUTPUT))
