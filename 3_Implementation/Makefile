@@ -63,7 +63,7 @@ test:
 
 coverage:
 	cp test/test_snooker_operations.c .
-	gcc -fprofile-arcs -ftest-coverage -I $(INC_H) -I $(INC_T) unity/unity.c test.c $(SRC) -o $(call FixPath, $(TEST_OUTPUT).$(EXEC))
+	gcc -fprofile-arcs -ftest-coverage -I $(INC_H) -I $(INC_T) unity/unity.c test_snooker_operations.c $(SRC) -o $(call FixPath, $(TEST_OUTPUT).$(EXEC))
 	$(call FixPath, ./$(TEST_OUTPUT).$(EXEC))
 	gcov -a $(COV_SRC)
 	$(RM) *.$(EXEC)
