@@ -60,7 +60,7 @@ all: $(SRC) $(BUILD)
 	
 run:
 	$(call FixPath,$(PROJECT_OUTPUT))
-test:
+test:$(BUILD)
 	gcc -I $(INC_H) -I $(INC_T) $(TEST_SRC) $(SRC) -o $(call FixPath,$(TEST_OUTPUT))
 	./$(call FixPath,$(TEST_OUTPUT))
 	
