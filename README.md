@@ -3,9 +3,9 @@
 
 
 
-Build | Code Quality | Unity | [Git Inspector](using github.io option) 
+Build | Code Quality | Unity | Git Inspector
 ------|----------|-------|--------------
-[![C/C++ CI - Build Status](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/cbuild.yml/badge.svg)](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/cbuild.yml) | [![Code Quality - Static Code - Cppcheck](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/cppcheck.yml) [![CodeQuality Dynamic Code Analysis Valgrind](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/dynamicanalysis.yml/badge.svg)](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/dynamicanalysis.yml)| [![Unit Testing - Unity](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/unity.yml/badge.svg)](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/unity.yml)| [![git inspector CI](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/gitinspector.yml/badge.svg)](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/gitinspector.yml)
+[![C/C++ CI - Build Status](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/cbuild.yml/badge.svg)](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/cbuild.yml) | [![Code Quality - Static Code - Cppcheck](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/cppcheck.yml) [![CodeQuality Dynamic Code Analysis Valgrind](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/dynamicanalysis.yml/badge.svg)](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/dynamicanalysis.yml)| [![Unit Testing - Unity](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/unity.yml/badge.svg)](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/unity.yml)| [![Contribution Check- Git Inspector](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/gitinspector.yml/badge.svg)](https://github.com/256182/MINI_PROJECT_LTTS/actions/workflows/gitinspector.yml)
 
 ## Folder Structure
 Folder             | Description
