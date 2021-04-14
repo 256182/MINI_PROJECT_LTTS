@@ -13,12 +13,12 @@ src/pinkcolour.c\
 src/yellowcolour.c\
 src/redcolour.c
 
-
+BUILD = Build
 # All test source files
 TEST_SRC = test/test_snooker_operations.c\
 unity/unity.c\
 
-TEST_OUTPUT = Test_$(PROJECT_NAME)
+TEST_OUTPUT =  $(BUILD)/Test_$(PROJECT_NAME).out
 
 # All include folders with header files
 INC_H = inc
@@ -55,15 +55,14 @@ $(PROJECT_NAME):all
 # Makefile will not run target command if the name with file already exists. To override, use .PHONY
 .PHONY : all test coverage run clean doc
 
-all: $(BUILD)
-	gcc -I $(INC_H) $(SRC) project_main.c -o $(call FixPath,$(PROJECT_NAME).$(EXEC))
-
-run:$(PROJECT_NAME)
-	$(call FixPath,$(BUILD)/$(PROJECT_NAME).$(EXEC))
-
-test: $(SRC) $(TEST_SRC) 
-	gcc -I $(INC_H) -I $(INC_T) $(TEST_SRC) $(SRC) -o $(call FixPath,$(TEST_OUTPUT).$(EXEC))
-	./$(call FixPath,$(TEST_OUTPUT).$(EXEC))
+all:
+	gcc -I $(INC_H) $(SRC) project_main.c -o $(call FixPath,$(PROJECT_OUTPUT))
+	
+run:
+	$(call FixPath,$(PROJECT_NAME).$(EXEC))
+test:
+	gcc -I $(INC_H) -I $(INC_T) $(TEST_SRC) $(SRC) -o $(call FixPath,$(TEST_OUTPUT))
+	./$(call FixPath,$(TEST_OUTPUT))
 	
 
 doc:
