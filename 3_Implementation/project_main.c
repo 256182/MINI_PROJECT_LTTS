@@ -6,7 +6,7 @@
 
 
 /**
- * @brief main function for user side
+ * @brief main function for the user side
  * 
  * @return int 
  */
