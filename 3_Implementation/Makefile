@@ -50,7 +50,7 @@ $(PROJECT_NAME):all
 
 
 # Makefile will not run target command if the name with file already exists. To override, use .PHONY
-.PHONY : all test coverages run clean doc
+.PHONY : all test coverage run clean doc
 
 all:
 	gcc -I $(INC_H) $(SRC) project_main.c -o $(call FixPath,$(PROJECT_NAME).$(EXEC))
