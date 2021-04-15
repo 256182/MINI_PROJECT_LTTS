@@ -81,7 +81,7 @@ debug:
 	gdb $(PROJECT_NAME).$(EXEC)
 
 valgrind:
-	valgrind ./$(PROJECT_NAME).$(EXEC)
+	valgrind ./$(TEST_OUTPUT).$(EXEC)
 
 
 clean:
