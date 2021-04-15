@@ -56,7 +56,7 @@ all:
 	gcc -I $(INC_H) $(SRC) project_main.c -o $(call FixPath,$(PROJECT_NAME).$(EXEC))
 	
 run:
-	$(call FixPath,$(PROJECT_NAME).$(EXEC))
+	./$(call FixPath,$(PROJECT_NAME).$(EXEC))
 test:
 	gcc -I $(INC_H) -I $(INC_T) $(TEST_SRC) $(SRC) -o $(call FixPath,$(TEST_OUTPUT).$(EXEC))
 	./$(call FixPath,$(TEST_OUTPUT).$(EXEC))
