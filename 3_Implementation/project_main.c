@@ -3,15 +3,10 @@
 #include"snooker.h"
 
 
-/**
- * @brief 
- * 
- * @param number_of_seconds 
- */
-  
+
 
 /**
- * @brief 
+ * @brief main function for user side
  * 
  * @return int 
  */
@@ -23,8 +18,8 @@ int main(){
     players_t nplay={0,1};
     int player_count=0;
     int red_ball_count=0;
-    char player1_name[100];
-    char player2_name[100];
+    char player1_name[100];/*player name1*/
+    char player2_name[100];/*player name2*/
     printf("Enter the Name of 1st Player(in caps) : ");
     scanf("%s",&player1_name);
     printf("Enter the Name of 2nd Player(in caps) : ");

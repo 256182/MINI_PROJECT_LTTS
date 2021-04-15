@@ -1,5 +1,11 @@
 #include"stdlib.h"
 #include"snooker.h"
+/**
+ * @brief Function used for unit testing and to return value 5
+ * 
+ * @param players 
+ * @return colors_t 
+ */
 
 colors_t blue(players_t *players){
     if (NULL == players){

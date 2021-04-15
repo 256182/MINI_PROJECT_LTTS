@@ -39,18 +39,54 @@ typedef struct players_t {
     int player2;    
 } players_t;
 /**
- * @brief 
+ * @brief function for red colour
  * 
  * @param players input
  * @return colors_t 
  */
 
 colors_t red(players_t *players);
+/**
+ * @brief function for yellow colour
+ * 
+ * @param players 
+ * @return colors_t 
+ */
 colors_t yellow(players_t *players);
+/**
+ * @brief function for green colour
+ * 
+ * @param players 
+ * @return colors_t 
+ */
 colors_t green(players_t *players);
+/**
+ * @brief function for brown colour
+ * 
+ * @param players 
+ * @return colors_t 
+ */
 colors_t brown(players_t *players);
+/**
+ * @brief function for blue colour
+ * 
+ * @param players 
+ * @return colors_t 
+ */
 colors_t blue(players_t *players);
+/**
+ * @brief function for pink colour
+ * 
+ * @param players 
+ * @return colors_t 
+ */
 colors_t pink(players_t *players);
+/**
+ * @brief function for black colour
+ * 
+ * @param players 
+ * @return colors_t 
+ */
 colors_t black(players_t *players);
 
 #endif  

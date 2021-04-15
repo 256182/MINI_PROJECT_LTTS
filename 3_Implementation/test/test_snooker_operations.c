@@ -40,6 +40,10 @@ int main()
 }
 
 /* Write all the test functions */ 
+/**
+ * @brief Test for function yellow
+ * 
+ */
 void test_yellow(void){
   players_t val1={0,1};
   players_t val2={1,0};
@@ -50,6 +54,10 @@ void test_yellow(void){
   TEST_ASSERT_EQUAL(2, yellow(&val1));
   TEST_ASSERT_EQUAL(2, yellow(&val2));
 }
+/**
+ * @brief Test for function green
+ * 
+ */
 void test_green(void){
   players_t val1={0,1};
   players_t val2={1,0};
@@ -60,6 +68,10 @@ void test_green(void){
   TEST_ASSERT_EQUAL(3, green(&val1));
   TEST_ASSERT_EQUAL(3, green(&val2));
 }
+/**
+ * @brief Test for function brown
+ * 
+ */
 void test_brown(void){
   players_t val1={0,1};
   players_t val2={1,0};
@@ -70,6 +82,10 @@ void test_brown(void){
   TEST_ASSERT_EQUAL(4, brown(&val1));
   TEST_ASSERT_EQUAL(4, brown(&val2));
 }
+/**
+ * @brief Test for function blue
+ * 
+ */
 void test_blue(void){
   players_t val1={0,1};
   players_t val2={1,0};
@@ -80,6 +96,10 @@ void test_blue(void){
   TEST_ASSERT_EQUAL(5, blue(&val1));
   TEST_ASSERT_EQUAL(5, blue(&val2));
 }
+/**
+ * @brief Test for function pink
+ * 
+ */
 void test_pink(void){
   players_t val1={0,1};
   players_t val2={1,0};
@@ -90,6 +110,10 @@ void test_pink(void){
   TEST_ASSERT_EQUAL(6, pink(&val1));
   TEST_ASSERT_EQUAL(6, pink(&val2));
 }
+/**
+ * @brief Test for function black
+ * 
+ */
 void test_black(void){
   players_t val1={0,1};
   players_t val2={1,0};
@@ -100,6 +124,10 @@ void test_black(void){
   TEST_ASSERT_EQUAL(7, black(&val1));
   TEST_ASSERT_EQUAL(7, black(&val2));
 }
+/**
+ * @brief Test for function red
+ * 
+ */
 void test_red(void){
   players_t val1={0,1};
   players_t val2={1,0};
